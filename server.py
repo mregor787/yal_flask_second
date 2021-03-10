@@ -27,5 +27,28 @@ def root(planet_name):
         '''
 
 
+@app.route('/results/<nickname>/<int:level>/<float:rating>')
+def results(nickname, level: int, rating: float):
+    return f'''
+            <!DOCTYPE html> 
+            <html>
+                <head>
+                    <meta charset="utf-8">
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+                    rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+                    crossorigin="anonymous">
+                    <title>Результаты</title>
+                </head>
+                <body>
+                    <h2>Результаты отбора</h2>
+                    <h3>Претендента на участие в миссии {nickname}:</h3>
+                    <h4 class="alert alert-success">Поздравляем! Ваш рейтинг после {level} этапа отбора</h4>
+                    <h4 class="alert">составляет {rating}!</h4>
+                    <h3 class="alert alert-warning">Желаем удачи!</h3>
+                </body>
+            </html>
+            '''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
